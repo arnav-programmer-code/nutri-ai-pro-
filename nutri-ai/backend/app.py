@@ -13,14 +13,14 @@ app = Flask(
 # --------------------------------------------
 # MONGO DB
 # --------------------------------------------
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("MONGO_DB_URI")
 db = client["nutri_ai"]
 users = db["users"]
 
 # --------------------------------------------
 # GEMINI SETUP (ALL IN THIS FILE)
 # --------------------------------------------
-genai.configure(api_key="AIzaSyC0WoWaK25l9U2YzuEheuY4GGWolcxjvLs")
+genai.configure(api_key="USE_YOUR_OWN_API_KEY")
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 def clean(text):
@@ -144,3 +144,4 @@ def ai_chat():
 # --------------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
+
