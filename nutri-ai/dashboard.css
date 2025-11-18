@@ -1,0 +1,391 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  padding: 2rem 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+.sidebar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+}
+
+.sidebar h2 {
+  padding: 0 2rem;
+  margin-bottom: 3rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.sidebar ul {
+  list-style: none;
+  flex: 1;
+}
+
+.sidebar li {
+  padding: 1rem 2rem;
+  margin: 0.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  font-weight: 500;
+  color: #4a5568;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.sidebar li:hover {
+  color: white;
+  transform: translateX(4px);
+}
+
+.sidebar li:hover::before {
+  width: 100%;
+}
+
+.sidebar li:active {
+  transform: translateX(2px) scale(0.98);
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.topbar h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+#username {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Page Container */
+.page {
+  flex: 1;
+  padding: 2.5rem;
+  overflow-y: auto;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.page.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  letter-spacing: -1px;
+}
+
+.page p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="file"],
+#foodInput {
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  color: #2d3748;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+#foodInput:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+input[type="file"] {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+input[type="file"]::file-selector-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Buttons */
+button {
+  padding: 1rem 2rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.5);
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+
+/* Water Tracker Specific */
+#water button {
+  font-size: 1.125rem;
+  padding: 1.25rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+#water p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  display: inline-block;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+#waterCount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile Page */
+#profile p {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 1.25rem 1.75rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  max-width: 500px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Scrollbar Styling */
+.page::-webkit-scrollbar {
+  width: 8px;
+}
+
+.page::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.page::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.page::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .sidebar h2 {
+    font-size: 1.5rem;
+  }
+  
+  .sidebar li {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .page {
+    padding: 1.5rem;
+  }
+  
+  .page h1 {
+    font-size: 2rem;
+  }
+  
+  input[type="text"],
+  #foodInput {
+    max-width: 100%;
+  }
+  
+  button {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* AI Text Input */
+#aiInput {
+  width: 100%;
+  max-width: 650px;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  font-size: 1.1rem;
+  color: #2d3748;
+  margin: 1.5rem 0;
+  resize: vertical;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+#aiInput:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+/* AI Response Box */
+.ai-box {
+  width: 100%;
+  max-width: 700px;
+  min-height: 180px;
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  color: #2d3748;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-out;
+  white-space: pre-wrap;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/register.css" />
+    <title>NutriAI Register</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="login-hd">Register to enjoy NutriAI Pro</h1>
+      <form action="/register" method="POST">
+        <img
+          src="https://png.pngtree.com/png-clipart/20230110/ourmid/pngtree-3d-icon-of-hospital-heart-health-care-and-medical-concept-png-image_6557799.png"
+          alt=""
+          width="40"
+          height="40"
+        />
+        <input
+          placeholder="Enter your email!"
+          class="email-input"
+          name="email"
+        />
+        <input
+          placeholder="Enter your password"
+          class="password-input"
+          name="password"
+        />
+        <input placeholder="Enter your name" class="name-input" name="name" />
+
+        <button class="login-btn">Register and Enjoy!</button>
+      </form>
+      <h2>Already Have an Account</h2>
+      <button class="register-btn" onclick="location.href='login.html'">
+        Login
+      </button>
+    </div>
+  </body>
+</html>

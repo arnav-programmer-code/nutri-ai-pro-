@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit';
+}
+
+body {
+    background-image: url("https://t3.ftcdn.net/jpg/02/70/35/00/360_F_270350073_WO6yQAdptEnAhYKM5GuA9035wbRnVJSr.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    background-color: rgb(0, 255, 136);
+    width: 250px;
+    margin-left: 500px;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 10%;
+}
+
+
+
+.email-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    outline: none;
+    background: #fafafa;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.password-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    outline: none;
+    background: #fafafa;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 6px;
+    background: linear-gradient(25deg, #38ff01, #03ddff);
+    transition: 0.3s ease;
+}
+
+.login-btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 6px;
+    background: linear-gradient(25deg, #38ff01, #03ddff);
+    transition: 0.3s ease;
+}
+
+.register-btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}

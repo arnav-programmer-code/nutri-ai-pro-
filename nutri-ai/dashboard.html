@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NutriAI Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h2>NutriAI</h2>
+        <ul>
+          <li onclick="showPage('home')">Home</li>
+          <li onclick="showPage('analyze')">AI Assistant</li>
+          <li onclick="showPage('water')">Water Tracker</li>
+          <li onclick="showPage('profile')">Profile</li>
+          <li onclick="window.location='/login'">Logout</li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main">
+        <div class="topbar">
+          <h3>Welcome, <span id="username">{{ user }}</span></h3>
+        </div>
+
+        <!-- HOME -->
+        <div id="home" class="page">
+          <h1>Dashboard</h1>
+          <p>Your AI-powered nutrition assistant is ready.</p>
+        </div>
+
+        <!-- AI ASSISTANT -->
+        <div id="analyze" class="page hidden">
+          <h1>AI Assistant</h1>
+
+          <textarea
+            id="aiInput"
+            placeholder="Ask something to NutriAI..."
+            rows="4"
+          ></textarea>
+          <button onclick="askAI()">Ask AI</button>
+
+          <h3>AI Response:</h3>
+          <div id="aiResponse" class="ai-box"></div>
+        </div>
+
+        <!-- WATER TRACKER -->
+        <div id="water" class="page hidden">
+          <h1>Water Tracker</h1>
+          <button onclick="addCup()">Add 1 Cup</button>
+          <p>Today's Water: <span id="waterCount">0</span> cups</p>
+        </div>
+
+        <!-- PROFILE -->
+        <div id="profile" class="page hidden">
+          <h1>Your Profile</h1>
+          <p>Name: {{ user }}</p>
+          <p>Email: Coming soon...</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
